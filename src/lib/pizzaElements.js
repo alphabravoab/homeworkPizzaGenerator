@@ -3,28 +3,32 @@ export const pizzaBase = [
     id: 1,
     size: 20,
     style: "NY Style",
-    price: 6.45
+    price: 6.45,
+    name: "S"
   },
 
   {
     id: 2,
     size: 25,
     style: "NY Style",
-    price: 8.99
+    price: 8.99,
+    name: "M"
   },
 
   {
     id: 3,
     size: 30,
     style: "NY Style",
-    price: 11.49
+    price: 11.49,
+    name: "L"
   },
 
   {
     id: 4,
     size: 35,
     style: "NY Style",
-    price: 13.49
+    price: 13.49,
+    name: "XL"
   }
 ];
 
