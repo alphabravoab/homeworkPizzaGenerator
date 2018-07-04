@@ -1,56 +1,89 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { selectBase } from "../actions/index.js";
+import { selectBase } from "../actions/base";
 import { bindActionCreators } from "redux";
+import { pizzaBase } from "../lib/pizzaElements";
 //inport action creator select base-- also connect
 
 class PizzaBase extends React.PureComponent {
   state = {
-    id: "",
-    size: "",
-    style: "",
-    price: 0
+    itemChecked: {}
   };
 
-  handleBaseSelection(e) {
-console.log(e)
-    const newSelection = e.target.value;
-    let newSelectionArray;
+  // handleChange = ( event ) => {//select
+  // const id = event.target.value;
+  // const currentdata = pizzaBase[id];
+  //   this.setState({
+  //      {
+  //        id : id,
+  //        price: base.price,
+  //        size :base.size,
+  //      }
+  //   })
 
-    if(this.state.pizzaBase.indexOf(newSelection) > -1) {
-      newSelectionArray = this.state.pizzaBase.filter(s => s !== newSelection)
-    } else {
-      newSelectionArray = [...this.state.pizzaBase, newSelection];
-    }
+  //   handleBaseSelection(e) {
+  // console.log(e)
+  //     const newSelection = e.target.value;
+  //     let newSelectionArray;
+  //
+  //     if(this.state.pizzaBase.indexOf(newSelection) > -1) {
+  //       newSelectionArray = this.state.pizzaBase.filter(s => s !== newSelection)
+  //     } else {
+  //       newSelectionArray = [...this.state.pizzaBase, newSelection];
+  //     }
+  //
+  //       this.setState({ pizzaBase: newSelectionArray });
+  //   }
+  //
+  //   handleSubmit = event => {
+  //     event.preventDefault();
+  //   };
 
-      this.setState({ pizzaBase: newSelectionArray });
+  checkItem(base, e) {
+    let itemChecked = this.state.itemChecked;
+
+    const id = e.target.value;
+    console.log(id);
+    let pizzabaseCurrent = pizzaBase[id];
+    console.log(pizzabaseCurrent);
+    itemChecked[id] = e.target.checked;
+    console.log(pizzabaseCurrent);
+    this.setState({ itemChecked });
+
+    this.props.selectBase(pizzaBase[id]);
   }
 
   handleSubmit = event => {
     event.preventDefault();
+    const base = this.state.base;
+    this.props.selectBase(base);
   };
 
   render() {
-    console.log(this.props.selectBase);
+    console.log();
     return (
       <div>
-        <div className="checkbox-group">
-          {this.props.pizzaBase.map(base => {
+        <form onSubmit={this.selectBase}>
+          {pizzaBase.map(base => {
             return (
               <label key={base.id} className="baseLabel">
                 <input
                   className="baseInput"
                   name={base.name}
-                  onChange={this.controlFunc}
                   value={base.id}
-                //  checked={this.selectedOptions.indexOf(base.id) > -1}
+                  onChange={e => this.checkItem(base, e)}
+                  //  checked={this.selectedOptions.indexOf(base.id) > -1}
                   type="checkbox"
                 />
                 {base.size}cm
               </label>
             );
           })}
-        </div>
+          <input type="submit" value="Submit" />
+        </form>
+        {/* {this.props.newBase.map(base => {
+          return <div> {base}</div>
+        })} */}
       </div>
 
       // <div>
@@ -71,8 +104,7 @@ console.log(e)
 }
 const mapStateToProps = state => {
   return {
-    pizzaBase: state.pizzaBase,
-    selectBase: state.selectBase
+    newBase: state.selectBase
 
     //  selectedBase: state.selectedBase // make reducer for selected base
   };

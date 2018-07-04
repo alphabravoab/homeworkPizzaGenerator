@@ -2,11 +2,11 @@ import { combineReducers } from 'redux'
 import pizzaBase from './pizzaBase'
 import pizzaSauce from './pizzaSauce'
 import pizzaToppings from './pizzaToppings'
-import selectBase from './selectBase'
+import newBase from './newBase'
 
 
 
 export default combineReducers({
 
- pizzaBase, pizzaSauce, pizzaToppings, selectBase
+ pizzaBase, pizzaSauce, pizzaToppings, newBase
 })

@@ -11,7 +11,9 @@ class ResultPage extends React.PureComponent {
     return (
 
       <div>
-
+        {/* {this.props.newBase.map(base => {
+          return <div> {base}</div>
+        })} */}
       </div>
     );
   }
@@ -19,7 +21,7 @@ class ResultPage extends React.PureComponent {
 
 
 const mapStateToProps = state => {
-  return { addTopping: state.addTopping }
+  return {     newBase: state.selectBase}
 }
 export default connect(mapStateToProps, {
 })(ResultPage);
