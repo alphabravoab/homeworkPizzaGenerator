@@ -1,14 +1,14 @@
 export const pizzaBase = [
+
   {
-    id: 1,
+    id: 0,
     size: 20,
     style: "NY Style",
     price: 6.45,
-    name: "S"
+    name: "M"
   },
-
   {
-    id: 2,
+    id: 1,
     size: 25,
     style: "NY Style",
     price: 8.99,
@@ -16,7 +16,7 @@ export const pizzaBase = [
   },
 
   {
-    id: 3,
+    id: 2,
     size: 30,
     style: "NY Style",
     price: 11.49,
@@ -24,7 +24,7 @@ export const pizzaBase = [
   },
 
   {
-    id: 4,
+    id: 3,
     size: 35,
     style: "NY Style",
     price: 13.49,

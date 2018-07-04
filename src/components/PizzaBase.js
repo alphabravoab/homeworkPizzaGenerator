@@ -69,7 +69,7 @@ class PizzaBase extends React.PureComponent {
               <label key={base.id} className="baseLabel">
                 <input
                   className="baseInput"
-                  name={base.name}
+
                   value={base.id}
                   onChange={e => this.checkItem(base, e)}
                   //  checked={this.selectedOptions.indexOf(base.id) > -1}
@@ -81,9 +81,7 @@ class PizzaBase extends React.PureComponent {
           })}
           <input type="submit" value="Submit" />
         </form>
-        {/* {this.props.newBase.map(base => {
-          return <div> {base}</div>
-        })} */}
+        {this.props.newBase}
       </div>
 
       // <div>
@@ -104,7 +102,7 @@ class PizzaBase extends React.PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    newBase: state.selectBase
+    newBase: state.newBase
 
     //  selectedBase: state.selectedBase // make reducer for selected base
   };
