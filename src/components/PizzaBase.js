@@ -16,7 +16,6 @@ class PizzaBase extends React.PureComponent {
     const id = e.target.name;
     itemsChecked[id] = e.target.checked;
     let pizzabaseCurrent = pizzaBases[id];
-    console.log("i am itemschecked", itemsChecked);
 
     if (!e.target.checked)
       return this.props.deSelectBase(pizzabaseCurrent);
@@ -26,8 +25,7 @@ class PizzaBase extends React.PureComponent {
     if (this.props.newBase.length > 0) {
       e.target.checked = false;
       this.props.deSelectBase(pizzabaseCurrent);
-      alert("you can only choose one pizzaBase");
-      console.log("i got bigger than 1");
+      alert("You can only choose 1 pizza base");
     }
   }
 
@@ -36,7 +34,6 @@ class PizzaBase extends React.PureComponent {
   };
 
   render() {
-    console.log();
     return (
       <div>
         <form onSubmit={this.selectBase}>
@@ -57,17 +54,12 @@ class PizzaBase extends React.PureComponent {
           <input type="submit" value="Submit" />
         </form>
         {this.props.newBase}
-        {console.log(this.props.newBase)}
       </div>
     );
   }
 }
 const mapStateToProps = state => {
-  return {
-    newBase: state.newBase
-
-    //  selectedBase: state.selectedBase // make reducer for selected base
-  };
+  return { newBase: state.newBase };
 };
 
 function matchDispatchToProps(dispatch) {

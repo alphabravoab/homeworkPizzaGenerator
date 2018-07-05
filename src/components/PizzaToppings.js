@@ -16,8 +16,7 @@ class PizzaToppings extends React.PureComponent {
     const id = e.target.name;
     itemsChecked[id] = e.target.checked;
     let pizzaToppingCurrent = pizzaToppings[id];
-    console.log("i am itemschecked", itemsChecked);
-  this.setState({ itemsChecked, isChecked: !this.state.isChecked });
+    this.setState({ itemsChecked, isChecked: !this.state.isChecked });
     if (!e.target.checked)
       return this.props.deSelectTopping(pizzaToppingCurrent);
 
@@ -35,7 +34,6 @@ class PizzaToppings extends React.PureComponent {
   };
 
   render() {
-    console.log();
     return (
       <div>
         <form onSubmit={this.selectTopping}>
@@ -47,7 +45,6 @@ class PizzaToppings extends React.PureComponent {
                   name={topping.id}
                   onChange={e => this.checkItem(topping, e)}
                   type="checkbox"
-                  disabled={this.state.disabled}
                 />
                 {topping.name}
               </label>
@@ -57,7 +54,6 @@ class PizzaToppings extends React.PureComponent {
           <input type="submit" value="Submit" />
         </form>
         {this.props.newTopping}
-        {console.log(this.props.newTopping)}
       </div>
     );
   }

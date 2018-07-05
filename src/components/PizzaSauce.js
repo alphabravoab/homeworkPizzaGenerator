@@ -7,9 +7,7 @@ import { pizzaSauce } from "../lib/pizzaElements";
 
 class PizzaSauce extends React.PureComponent {
   state = {
-    itemChecked: {},
-    disabled: true,
-    isChecked: false
+    itemChecked: []
   };
 
   checkItem(sauce, e) {
@@ -18,21 +16,13 @@ class PizzaSauce extends React.PureComponent {
     const value = e.target.checked;
     itemChecked[id] = e.target.checked;
     let pizzaSauceCurrent = pizzaSauce[id];
-    console.log(pizzaSauceCurrent);
-    console.log(e.target.checked);
 
     if (value) {
       this.setState({ itemChecked, isChecked: !this.state.isChecked });
       this.props.selectSauce(pizzaSauceCurrent);
-    } else {
+    }
+    else
       return this.props.deSelectSauce(pizzaSauceCurrent);
-    }
-
-    if (this.props.newSauce.length > 2) {
-      // return this.props.disabled( {disabled: true} )
-      console.log("i got bigger than 2");
-    }
-    console.log(e.target.checked.length);
   }
 
   handleSubmit = event => {
@@ -42,7 +32,6 @@ class PizzaSauce extends React.PureComponent {
   };
 
   render() {
-    console.log();
     return (
       <div>
         <form onSubmit={this.selectsauce}>
@@ -53,10 +42,7 @@ class PizzaSauce extends React.PureComponent {
                   className="sauceInput"
                   name={sauce.id}
                   onChange={e => this.checkItem(sauce, e)}
-                  disabled={e => this.disabled(sauce, e)}
                   type="checkbox"
-
-                  //   return this.state.disabled}}
                 />
                 {sauce.name}
               </label>

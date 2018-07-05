@@ -7,9 +7,7 @@ class ResultPage extends React.PureComponent {
   componentDidMount() {}
 
   render() {
-    console.log(this.state)
     return (
-
       <div>
         {/* {this.props.newBase.map(base => {
           return <div> {base}</div>
