@@ -29,14 +29,10 @@ class PizzaBase extends React.PureComponent {
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-  };
-
   render() {
     return (
       <div>
-        <form onSubmit={this.selectBase}>
+        <form>
           {pizzaBases.map(base => {
             return (
               <label key={base.id} className="baseLabel">
@@ -51,9 +47,7 @@ class PizzaBase extends React.PureComponent {
               </label>
             );
           })}
-          <input type="submit" value="Submit" />
         </form>
-        {this.props.newBase}
       </div>
     );
   }

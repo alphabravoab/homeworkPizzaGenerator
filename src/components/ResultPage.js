@@ -19,7 +19,10 @@ class ResultPage extends React.PureComponent {
 
 
 const mapStateToProps = state => {
-  return {     newBase: state.selectBase}
+  return {     newBase: state.selectBase,
+newDelivery: state.newDelivery
+
+  }
 }
 export default connect(mapStateToProps, {
 })(ResultPage);

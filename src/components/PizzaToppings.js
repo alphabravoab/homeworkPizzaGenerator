@@ -16,7 +16,7 @@ class PizzaToppings extends React.PureComponent {
     const id = e.target.name;
     itemsChecked[id] = e.target.checked;
     let pizzaToppingCurrent = pizzaToppings[id];
-    this.setState({ itemsChecked, isChecked: !this.state.isChecked });
+    
     if (!e.target.checked)
       return this.props.deSelectTopping(pizzaToppingCurrent);
 
@@ -29,14 +29,10 @@ class PizzaToppings extends React.PureComponent {
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-  };
-
   render() {
     return (
       <div>
-        <form onSubmit={this.selectTopping}>
+        <form>
           {pizzaToppings.map(topping => {
             return (
               <label key={topping.id} className="toppingLabel">
@@ -50,10 +46,7 @@ class PizzaToppings extends React.PureComponent {
               </label>
             );
           })}
-          <button> Change my topping </button>
-          <input type="submit" value="Submit" />
         </form>
-        {this.props.newTopping}
       </div>
     );
   }

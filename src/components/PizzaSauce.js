@@ -17,24 +17,16 @@ class PizzaSauce extends React.PureComponent {
     itemChecked[id] = e.target.checked;
     let pizzaSauceCurrent = pizzaSauce[id];
 
-    if (value) {
-      this.setState({ itemChecked, isChecked: !this.state.isChecked });
+    if (value)
       this.props.selectSauce(pizzaSauceCurrent);
-    }
     else
-      return this.props.deSelectSauce(pizzaSauceCurrent);
+      this.props.deSelectSauce(pizzaSauceCurrent);
   }
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const sauce = this.state.sauce;
-    this.props.selectSauce(sauce);
-  };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.selectsauce}>
+        <form>
           {pizzaSauce.map(sauce => {
             return (
               <label key={sauce.id} className="sauceLabel">
@@ -48,10 +40,7 @@ class PizzaSauce extends React.PureComponent {
               </label>
             );
           })}
-          <input type="submit" value="Submit" />
         </form>
-
-        {this.props.newSauce}
       </div>
 
     );

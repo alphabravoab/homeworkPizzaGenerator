@@ -8,6 +8,7 @@ import PizzaSauce  from './components/PizzaSauce'
 import PizzaToppings  from './components/PizzaToppings'
 import PizzaTotalPrice  from './components/PizzaTotalPrice'
 import ResultPage  from './components/ResultPage'
+import FastDelivery  from './components/FastDelivery'
 
 
 
@@ -19,12 +20,12 @@ class App extends Component {
 
           <h1>Welcome to your personal Pizza Generator!</h1>
 
-          <PizzaBase />
-          <PizzaSauce />
-          <PizzaToppings />
+          <PizzaBase /><br />
+          <PizzaSauce /><br />
+          <PizzaToppings /><br /><br />
+          <FastDelivery />
 
-          <PizzaTotalPrice /><br /><br /><br /><br />
-
+          <PizzaTotalPrice /><br /><br />
 
           <ResultPage />
         </div>
