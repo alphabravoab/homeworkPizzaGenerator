@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux'
-import pizzaBase from './pizzaBase'
 import pizzaSauce from './pizzaSauce'
 import pizzaToppings from './pizzaToppings'
 import newBase from './newBase'
+import newSauce from './newSauce'
+import newTopping from './newTopping'
 
 
 
 export default combineReducers({
 
- pizzaBase, pizzaSauce, pizzaToppings, newBase
+pizzaSauce, pizzaToppings, newBase, newSauce, newTopping
 })

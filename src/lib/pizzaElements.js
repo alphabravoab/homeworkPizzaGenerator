@@ -1,18 +1,18 @@
-export const pizzaBase = [
+export const pizzaBases = [
 
   {
     id: 0,
     size: 20,
     style: "NY Style",
     price: 6.45,
-    name: "M"
+    name: "Small Pizza"
   },
   {
     id: 1,
     size: 25,
     style: "NY Style",
     price: 8.99,
-    name: "M"
+    name: "Medium Pizza"
   },
 
   {
@@ -20,7 +20,7 @@ export const pizzaBase = [
     size: 30,
     style: "NY Style",
     price: 11.49,
-    name: "L"
+    name: "Large Pizza"
   },
 
   {
@@ -28,28 +28,28 @@ export const pizzaBase = [
     size: 35,
     style: "NY Style",
     price: 13.49,
-    name: "XL"
+    name: "Extra Large Pizza"
   }
 ];
 
 export const pizzaSauce = [
   {
-    id: 1,
+    id: 0,
     name: "White sauce",
     price: 0
   },
   {
-    id: 2,
+    id: 1,
     name: "Red sauce",
     price: 0
   },
   {
-    id: 3,
+    id: 2,
     name: "Double red sauce",
     price: 1
   },
   {
-    id: 4,
+    id: 3,
     name: "Mix it up",
     price: 1.5
   }
@@ -57,37 +57,37 @@ export const pizzaSauce = [
 
 export const pizzaToppings = [
   {
-    id: 1,
+    id: 0,
     name: "Pineapple",
     price: 0.5
   },
   {
-    id: 2,
+    id: 1,
     name: "Corn",
     price: 0.5
   },
   {
-    id: 3,
+    id: 2,
     name: "Olives(green)",
     price: 0.5
   },
   {
-    id: 4,
+    id: 3,
     name: "Red union",
     price: 0.5
   },
   {
-    id: 5,
+    id: 4,
     name: "Spinach",
     price: 0.5
   },
   {
-    id: 6,
+    id: 5,
     name: "Cherry tomatoes",
     price: 0.5
   },
   {
-    id: 7,
+    id: 6,
     name: "Chicken",
     price: 0.5
   }

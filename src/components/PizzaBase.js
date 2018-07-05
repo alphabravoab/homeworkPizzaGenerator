@@ -1,62 +1,38 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { selectBase } from "../actions/base";
+import { selectBase, deSelectBase } from "../actions/base";
 import { bindActionCreators } from "redux";
-import { pizzaBase } from "../lib/pizzaElements";
+import { pizzaBases } from "../lib/pizzaElements";
 //inport action creator select base-- also connect
 
 class PizzaBase extends React.PureComponent {
   state = {
-    itemChecked: {}
+    itemsChecked: [],
+    isChecked: false
   };
 
-  // handleChange = ( event ) => {//select
-  // const id = event.target.value;
-  // const currentdata = pizzaBase[id];
-  //   this.setState({
-  //      {
-  //        id : id,
-  //        price: base.price,
-  //        size :base.size,
-  //      }
-  //   })
-
-  //   handleBaseSelection(e) {
-  // console.log(e)
-  //     const newSelection = e.target.value;
-  //     let newSelectionArray;
-  //
-  //     if(this.state.pizzaBase.indexOf(newSelection) > -1) {
-  //       newSelectionArray = this.state.pizzaBase.filter(s => s !== newSelection)
-  //     } else {
-  //       newSelectionArray = [...this.state.pizzaBase, newSelection];
-  //     }
-  //
-  //       this.setState({ pizzaBase: newSelectionArray });
-  //   }
-  //
-  //   handleSubmit = event => {
-  //     event.preventDefault();
-  //   };
-
   checkItem(base, e) {
-    let itemChecked = this.state.itemChecked;
+    let itemsChecked = this.state.itemsChecked;
+    const id = e.target.name;
+    itemsChecked[id] = e.target.checked;
+    let pizzabaseCurrent = pizzaBases[id];
+    console.log("i am itemschecked", itemsChecked);
 
-    const id = e.target.value;
-    console.log(id);
-    let pizzabaseCurrent = pizzaBase[id];
-    console.log(pizzabaseCurrent);
-    itemChecked[id] = e.target.checked;
-    console.log(pizzabaseCurrent);
-    this.setState({ itemChecked });
+    if (!e.target.checked)
+      return this.props.deSelectBase(pizzabaseCurrent);
 
-    this.props.selectBase(pizzaBase[id]);
+    this.props.selectBase(pizzabaseCurrent);
+
+    if (this.props.newBase.length > 0) {
+      e.target.checked = false;
+      this.props.deSelectBase(pizzabaseCurrent);
+      alert("you can only choose one pizzaBase");
+      console.log("i got bigger than 1");
+    }
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    const base = this.state.base;
-    this.props.selectBase(base);
   };
 
   render() {
@@ -64,16 +40,15 @@ class PizzaBase extends React.PureComponent {
     return (
       <div>
         <form onSubmit={this.selectBase}>
-          {pizzaBase.map(base => {
+          {pizzaBases.map(base => {
             return (
               <label key={base.id} className="baseLabel">
                 <input
                   className="baseInput"
-
-                  value={base.id}
+                  name={base.id}
                   onChange={e => this.checkItem(base, e)}
-                  //  checked={this.selectedOptions.indexOf(base.id) > -1}
                   type="checkbox"
+                  checked={this.state.checked}
                 />
                 {base.size}cm
               </label>
@@ -82,21 +57,8 @@ class PizzaBase extends React.PureComponent {
           <input type="submit" value="Submit" />
         </form>
         {this.props.newBase}
+        {console.log(this.props.newBase)}
       </div>
-
-      // <div>
-      //   <form>
-      //    <div>
-      //       {this.props.pizzaBase.map(base => (
-      //         <div key={base.id} value={base.id} onClick={() => this.props.selectBase(base)}>
-      //           I want {base.size} cm Pizza
-      //         </div>
-      //       ))}
-      //     </div>
-      //   </form>
-      //
-      //   {this.props.selectBase}
-      // </div>
     );
   }
 }
@@ -109,7 +71,10 @@ const mapStateToProps = state => {
 };
 
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ selectBase: selectBase }, dispatch);
+  return bindActionCreators(
+    { selectBase: selectBase, deSelectBase: deSelectBase },
+    dispatch
+  );
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PizzaBase);

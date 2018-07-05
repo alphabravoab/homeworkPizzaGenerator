@@ -3,19 +3,30 @@ import { connect } from "react-redux";
 
 
 class PizzaTotalPrice extends React.PureComponent {
-  componentDidMount() {}
+
+
+
 
   render() {
-    //console.log(this.state)
+
     return (
       <div>
        <b>Total price</b>
-        <br /> &euro; 42
+       {console.log('ben ik een array', this.props.newTopping)}
+      {this.props.newTopping}
+      {this.props.newSauce}
+      {this.props.newBase}
+
+      {this.newPrice}
       </div>
     );
   }
 }
 const mapStateToProps = state => {
-  return { state };
+  return {
+    newTopping: state.newTopping,
+    newSauce: state.newSauce,
+    newBase: state.newBase,
+  };
 };
 export default connect(mapStateToProps,{})(PizzaTotalPrice);
